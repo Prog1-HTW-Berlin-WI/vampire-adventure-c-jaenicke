@@ -1,7 +1,12 @@
 package model;
 
+/**
+ * Class Human
+ * 
+ * Represents a person to feed on
+ */
 public class Human {
-    String titel;
+    // TODO add attributes
 
-    private String name;
+    // TODO add methods
 }
