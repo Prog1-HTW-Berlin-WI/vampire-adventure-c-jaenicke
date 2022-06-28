@@ -25,7 +25,9 @@ public class VampireAdventureApp {
 
         while (true) {
             showMenu();
-            int choice = readUserInput();
+            //int choice = readUserInput();
+            System.out.print("Enter a number between 1 and 6:\t");
+            int choice = readIntInput();
             handle(choice);
             System.out.println("====================");
         }
@@ -33,6 +35,7 @@ public class VampireAdventureApp {
 
     /**
      * Read user input for main menu
+     * Not used anymore!
      * 
      * @return
      */
