@@ -25,7 +25,7 @@ public class VampireAdventureApp {
 
         while (true) {
             showMenu();
-            //int choice = readUserInput();
+            // int choice = readUserInput();
             System.out.print("Enter a number between 1 and 6:\t");
             int choice = readIntInput();
             handle(choice);
@@ -59,7 +59,9 @@ public class VampireAdventureApp {
     private static void handle(int choice) {
         switch (choice) {
             case 1:
-                createVampire();
+                // createVampire();
+                // for testing purposes, use predefined vampires
+                debugCreateVampire();
                 break;
             case 2:
                 showVampires();
@@ -279,6 +281,35 @@ public class VampireAdventureApp {
 
         // TODO wait until key press to go back
         waitSeconds(3);
+    }
+
+    /**
+     * Create predefined Vampires for testing purposes
+     */
+    private static void debugCreateVampire() {
+        System.out.println("====================");
+        System.out.println("\nDEBUG\tVampire Creation Menu\n");
+
+        System.out.println("\nCreating creator vampire");
+        System.out.println("Name: Name Creator Vampire, Age: 300");
+        CreatorVampire cVampire = new CreatorVampire("Name Creator Vampire", 300);
+        playerParty.setCreator(cVampire);
+
+        System.out.println("\nCreating first minion vampire");
+        System.out.println("Name: Someone Minion, Age: 100");
+        Vampire mVamp1 = new Vampire("Someone Minion", 100);
+        mVamp1.setCreator(cVampire);
+        playerParty.addMember(mVamp1);
+
+        System.out.println("\nCreating second minion vampire");
+        System.out.println("Name: Someone Second Minion, Age: 200");
+        Vampire mVamp2 = new Vampire("Someone Second Minion", 200);
+        mVamp2.setCreator(cVampire);
+        playerParty.addMember(mVamp2);
+
+        System.out.println("\nGoing back to main menu in 3 seconds!");
+        waitSeconds(3);
+
     }
 
     /**
