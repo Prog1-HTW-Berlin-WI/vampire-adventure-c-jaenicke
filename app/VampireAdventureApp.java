@@ -244,7 +244,7 @@ public class VampireAdventureApp {
         System.out.print("\tHow old is the vampire: ");
         int age = readIntInput();
 
-        CreatorVampire cVampire = new CreatorVampire(name, age);
+        CreatorVampire cVampire = new CreatorVampire(name, age, playerParty);
         playerParty.setCreator(cVampire);
 
         // create first minion
@@ -256,7 +256,7 @@ public class VampireAdventureApp {
         System.out.print("\tHow old is the vampire: ");
         age = readIntInput();
 
-        Vampire mVamp1 = new Vampire(name, age);
+        Vampire mVamp1 = new Vampire(name, age, playerParty);
         mVamp1.setCreator(cVampire);
         playerParty.addMember(mVamp1);
 
@@ -269,7 +269,7 @@ public class VampireAdventureApp {
         System.out.print("\tHow old is this vampire: ");
         age = readIntInput();
 
-        Vampire mVamp2 = new Vampire(name, age);
+        Vampire mVamp2 = new Vampire(name, age, playerParty);
         mVamp2.setCreator(cVampire);
         playerParty.addMember(mVamp2);
 
@@ -294,16 +294,16 @@ public class VampireAdventureApp {
         // TODO when the vampire class is expanded, fill out more of the attributes
 
         System.out.println("Creating creator vampire\nName: The Creator Vampire\n Age: 300");
-        CreatorVampire cVampire = new CreatorVampire("The Creator Vampire", 300);
+        CreatorVampire cVampire = new CreatorVampire("The Creator Vampire", 300, playerParty);
         playerParty.setCreator(cVampire);
 
         System.out.println("\nCreating first minion vampire\nName: First Minion Vampire\n Age: 100");
-        Vampire mVamp1 = new Vampire("First Minion Vampire", 100);
+        Vampire mVamp1 = new Vampire("First Minion Vampire", 100, playerParty);
         mVamp1.setCreator(cVampire);
         playerParty.addMember(mVamp1);
 
         System.out.println("\nCreating second minion vampire\nName: Second Minion Vampire\n Age: 200");
-        Vampire mVamp2 = new Vampire("Second Minion Vampire", 200);
+        Vampire mVamp2 = new Vampire("Second Minion Vampire", 200, playerParty);
         mVamp2.setCreator(cVampire);
         playerParty.addMember(mVamp2);
 
