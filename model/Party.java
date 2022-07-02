@@ -34,7 +34,7 @@ public class Party {
 
     /**
      * 
-     * @return
+     * @return boolean
      */
     public boolean getFull() {
         return this.isFull;
@@ -55,7 +55,7 @@ public class Party {
 
     /**
      * 
-     * @return
+     * @return array of members
      */
     public Vampire[] getMembers(){
         return this.members;
