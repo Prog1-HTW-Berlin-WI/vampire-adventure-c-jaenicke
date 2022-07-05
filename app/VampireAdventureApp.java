@@ -197,7 +197,8 @@ public class VampireAdventureApp {
             } else if (members[input - 1] == null) {
                 System.out.println("That vampire doesn't exist!");
             } else {
-                playerParty.deleteMember(input - 1);
+                Vampire vampire = members[input-1];
+                playerParty.deleteMember(vampire);
             }
         }
 
