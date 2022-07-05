@@ -49,8 +49,23 @@ public class CreatorVampire extends Vampire {
         vampire.attackHuman(human);
     }
 
-    public void sacrifice(Vampire vampire, VampireHunter vampireHunter) {
-        // TODO
+    /**
+     * 
+     * @param vampire
+     * @param vampireHunter
+     * @return boolean if sacrifice was successful
+     */
+    public boolean sacrifice(Vampire vampire, VampireHunter vampireHunter) {
+        Random flee = new Random();
+        int chance = flee.nextInt(2);
+
+        playerParty.deleteMember(vampire);
+
+        if (chance == 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public boolean flee(Vampire vampire) {

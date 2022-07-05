@@ -65,7 +65,11 @@ public class Party {
      * 
      * @param position
      */
-    public void deleteMember(int position){
-        members[position] = null;
+    public void deleteMember(Vampire vampire){
+        for (int i = 0; i < members.length; i++){
+            if (vampire == members[i]){
+                members[i] = null;
+            }
+        }
     }
 }
