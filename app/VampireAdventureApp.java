@@ -1,8 +1,11 @@
 package app;
 
 import java.util.Scanner;
+import java.util.Random;
 
+import model.City;
 import model.CreatorVampire;
+import model.Human;
 import model.Party;
 import model.Vampire;
 
@@ -39,17 +42,17 @@ public class VampireAdventureApp {
      * 
      * @return
      */
-    private static int readUserInput() {
-        System.out.print("\nPlease choose a number between 1 and 6:\t");
-        int choiceInternal = 0;
-        try {
-            choiceInternal = scanner.nextInt();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+    // private static int readUserInput() {
+    //     System.out.print("\nPlease choose a number between 1 and 6:\t");
+    //     int choiceInternal = 0;
+    //     try {
+    //         choiceInternal = scanner.nextInt();
+    //     } catch (Exception e) {
+    //         System.out.println(e.getMessage());
+    //     }
 
-        return choiceInternal;
-    }
+    //     return choiceInternal;
+    // }
 
     /**
      * handle user input, depending on choice
@@ -73,6 +76,7 @@ public class VampireAdventureApp {
                 deleteVampire();
                 break;
             case 5:
+                startAdventure();
                 break;
             case 6:
                 // exit with code 0 when quitting game
@@ -105,6 +109,95 @@ public class VampireAdventureApp {
         for (int i = 1; i < menuItems.length; i++) {
             System.out.println(menuItems[i]);
         }
+    }
+
+    private static void startAdventure() {
+        Vampire[] members = playerParty.getMembers();
+        Random flee = new Random();
+        City berlin = new City();
+        berlin.populateCity();
+
+        System.out.println("\nRise vampires, the sun has gone down and there is lots that needs to be done.");
+        for (int i = 0; i < 15; i++) {
+            System.out.println("\n====================");
+            System.out.println("\n Time is running: Round " + (i + 1));
+            int chance = flee.nextInt(10);
+
+            if (chance < 7) {
+                Human human = berlin.getHuman();
+                System.out.println("\nYou meet a human! Its name is " + human.getName() + ".");
+                // meet human
+                System.out.print("\n\tDo you want to send a minion (0) or attack yourself (1)? ");
+                int input = readIntInput();
+                if (input == 1) {
+                    // attack
+                    playerParty.getCreator().attackHuman(human);
+
+                } else {
+                    // minion should attack
+
+                    System.out.print("\nWhich minion should attack? ");
+                    listMembers(0);
+                    // choose a minion
+                    while (true) {
+                        int choice = readIntInput();
+                        if (playerParty.getMembers().length < choice + 1) {
+                            System.out.println("That is not a valid vampire!");
+                        } else if (members[choice] == null) {
+                            System.out.println("That is not a valid vampire!");
+                        } else {
+                            Vampire vampire = (members[choice]);
+                            playerParty.getCreator().commandToAttack(vampire, human);
+                            break;
+                        }
+                    }
+                }
+
+                // check if human is calm
+                if (human.getCalm() != true) {
+                    System.out.println("Your attack has failed!\n\tYou run away and hide.");
+                } else {
+                    System.out.println("Your attack was successful, the human is calm.");
+                    System.out.print("Who should drink the humans blood, a minion (0) or you (1)? ");
+                    input = readIntInput();
+                    if (input == 1) {
+                        // drink blood as creator vampire
+                        System.out.print("How much do you want to drink? ");
+                        int amount = readIntInput();
+                        playerParty.getCreator().drinkBlood(amount, human);
+                        human.looseBlood(amount, playerParty.getCreator(), playerParty);
+
+                    } else {
+                        // minion should drink
+                        System.out.print("\n\tWhich minion should drink? ");
+                        listMembers(0);
+                        // choose a minion
+                        while (true) {
+                            int choice = readIntInput();
+                            if (playerParty.getMembers().length < choice + 1) {
+                                System.out.println("That is not a valid vampire!");
+                            } else if (members[choice] == null) {
+                                System.out.println("That is not a valid vampire!");
+                            } else {
+                                Vampire vampire = (members[input + 1]);
+                                System.out.print("\n\tHow much should the minion " + vampire.getName() + " drink? ");
+                                int amount = readIntInput();
+                                playerParty.getCreator().commandToDrinkBlood(vampire, amount, human);
+                                human.looseBlood(amount, vampire, playerParty);
+                            }
+                        }
+                    }
+
+                }
+
+            } else if ((7 <= chance) && (chance < 9)) {
+                System.out.println("\nYou meet a vampire hunter!");
+                // meet VampireHunter
+            } else {
+                System.out.println("\nThe round is over. You didn't meet anyone.");
+            }
+            waitSeconds(2);
+        }
 
     }
 
@@ -136,7 +229,7 @@ public class VampireAdventureApp {
                 return;
             } else if (input == 1) {
                 showVampireStats(playerParty.getCreator());
-                break;
+                return;
             } else if (members.length + 2 < input) {
                 System.out.println("That is not a valid vampire!");
             } else if (members[input - 2] == null) {
@@ -197,7 +290,7 @@ public class VampireAdventureApp {
             } else if (members[input - 1] == null) {
                 System.out.println("That vampire doesn't exist!");
             } else {
-                Vampire vampire = members[input-1];
+                Vampire vampire = members[input - 1];
                 playerParty.deleteMember(vampire);
             }
         }

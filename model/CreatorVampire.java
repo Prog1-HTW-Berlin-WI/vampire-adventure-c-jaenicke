@@ -35,13 +35,13 @@ public class CreatorVampire extends Vampire {
 
     public void commandToDrinkBlood(Vampire vampire, int amount, Human human) {
         if (amount <= human.getAmountOfBlood()) {
-            vampire.drinkBlood(amount);
+            vampire.drinkBlood(amount, human);
             human.looseBlood(amount, vampire, playerParty);
-            System.err.println("The minion vampire drank " + amount + " liters of blood.");
+            System.err.println("\t The minion vampire drank " + amount + " liters of blood.");
         } else {
-            vampire.drinkBlood(human.getAmountOfBlood());
+            vampire.drinkBlood(human.getAmountOfBlood(), human);
             human.looseBlood(human.getAmountOfBlood(), vampire, playerParty);
-            System.out.println("It seems, that the human has died.");
+            System.out.println("\tIt seems, that the human has died.");
         }
     }
 
@@ -73,10 +73,10 @@ public class CreatorVampire extends Vampire {
         int chance = flee.nextInt(101);
 
         if (chance <= 40) {
-            System.out.println("You managed to escape the vampire hunter!");
+            System.out.println("\tYou managed to escape the vampire hunter!");
             return true;
         } else {
-            System.out.println("You failed to escape the vampire hunter!");
+            System.out.println("\tYou failed to escape the vampire hunter!");
             return false;
         }
     }

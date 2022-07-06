@@ -103,10 +103,10 @@ public class Human {
         int chance = rand.nextInt(101);
 
         if (chance <= 25) {
-            System.out.println("The human defended himself!");
+            System.out.println("\tThe human defended himself!");
             return true;
         } else {
-            System.out.println("The human couldnt defend himself!");
+            System.out.println("\tThe human couldn't defend himself!");
             return false;
         }
     }
@@ -133,9 +133,16 @@ public class Human {
      * @param vampire
      */
     public void turnIntoVampire(Vampire vampire, Party playerParty) {
+        System.out.println("The human is turning into a vampire!");
         Vampire newVampire = new Vampire(this.name, this.age, playerParty);
         newVampire.setCreator(vampire);
-        playerParty.addMember(newVampire);
+        if (playerParty.getFull() == true) {
+            System.out.println(
+                    "\tLooks like you cant command any more vampires! The now vampire storms off into the night.");
+        } else {
+            playerParty.addMember(newVampire);
+            System.out.println("\tThe now vampire, " + this.getName() + ", joins your group!");
+        }
     }
 
     /**
@@ -149,9 +156,13 @@ public class Human {
 
         if (this.amountOfBlood <= 0) {
             this.deceased = true;
+            System.out.println("\tThe human has died! You drank all of its blood!");
         } else if (this.amountOfBlood < 5) {
             this.deceased = true;
             this.turnIntoVampire(vampire, playerParty);
+        } else {
+            this.calm = false;
+            System.out.println("\tYou drink its blood and leave.");
         }
     }
 

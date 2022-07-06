@@ -42,12 +42,14 @@ public class Party {
 
     /**
      * add new member at first free spot
+     * 
      * @param vamp
      */
     public void addMember(Vampire vamp) {
         for (int i = 0; i < members.length; i++) {
             if (members[i] == null) {
                 members[i] = vamp;
+                checkFull();
                 break;
             }
         }
@@ -57,7 +59,7 @@ public class Party {
      * 
      * @return array of members
      */
-    public Vampire[] getMembers(){
+    public Vampire[] getMembers() {
         return this.members;
     }
 
@@ -65,11 +67,27 @@ public class Party {
      * 
      * @param position
      */
-    public void deleteMember(Vampire vampire){
-        for (int i = 0; i < members.length; i++){
-            if (vampire == members[i]){
+    public void deleteMember(Vampire vampire) {
+        for (int i = 0; i < members.length; i++) {
+            if (vampire == members[i]) {
                 members[i] = null;
+                checkFull();
             }
         }
     }
+
+    public void checkFull(){
+        int full = 0;
+        for (int i = 0; i < this.members.length; i++){
+            if (this.members[i] != null){
+                full = full + 1;
+            }
+        }
+        if (full == this.members.length){
+            this.isFull = true;
+        } else {
+            this.isFull = false;
+        }
+    }
+
 }

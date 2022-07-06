@@ -231,8 +231,12 @@ public class Vampire {
      * 
      * @param amount
      */
-    public void drinkBlood(int amount) {
-        this.hunger = this.hunger + amount;
+    public void drinkBlood(int amount, Human human) {
+        if (human.getAmountOfBlood() < amount) {
+            this.hunger = this.hunger + human.getAmountOfBlood();
+        } else {
+            this.hunger = this.hunger + amount;
+        }
     }
 
     /**
