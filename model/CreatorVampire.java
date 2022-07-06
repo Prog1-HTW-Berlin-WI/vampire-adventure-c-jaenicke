@@ -9,13 +9,23 @@ import java.util.Random;
  * Extends the class Vampire
  */
 public class CreatorVampire extends Vampire {
-
+    // never really used, since the Party class takes this position
     private Vampire descendants[] = new Vampire[10];
 
+    /**
+     * constructor, uses super constructor Vampire class
+     * 
+     * @param name
+     * @param age
+     * @param playerParty
+     */
     public CreatorVampire(String name, int age, Party playerParty) {
         super(name, age, playerParty);
     }
 
+    /**
+     * list all descendants of a vampire and their stats
+     */
     public void listAllDescendants() {
         // refresh list of descendants
         descendants = playerParty.getMembers();
@@ -33,23 +43,37 @@ public class CreatorVampire extends Vampire {
         }
     }
 
+    /**
+     * command a minion vampire to drink an amount of blood from a human
+     * gets called by creatorVampire
+     * 
+     * @param vampire
+     * @param amount
+     * @param human
+     */
     public void commandToDrinkBlood(Vampire vampire, int amount, Human human) {
         if (amount <= human.getAmountOfBlood()) {
             vampire.drinkBlood(amount, human);
             human.looseBlood(amount, vampire, playerParty);
-            System.err.println("\t The minion vampire drank " + amount + " liters of blood.");
         } else {
             vampire.drinkBlood(human.getAmountOfBlood(), human);
             human.looseBlood(human.getAmountOfBlood(), vampire, playerParty);
-            System.out.println("\tIt seems, that the human has died.");
         }
     }
 
+    /**
+     * command a minion vampire to attack and subdue a human
+     * gets called by creatorVampire
+     * 
+     * @param vampire
+     * @param human
+     */
     public void commandToAttack(Vampire vampire, Human human) {
         vampire.attackHuman(human);
     }
 
     /**
+     * sacrifice a minion vampire to flee a vampireHunter
      * 
      * @param vampire
      * @param vampireHunter
@@ -68,6 +92,12 @@ public class CreatorVampire extends Vampire {
         }
     }
 
+    /**
+     * try to flee vampireHunter without sacrificing anything
+     * 
+     * @param vampire
+     * @return if fleeing was successful as a boolean
+     */
     public boolean flee(Vampire vampire) {
         Random flee = new Random();
         int chance = flee.nextInt(101);

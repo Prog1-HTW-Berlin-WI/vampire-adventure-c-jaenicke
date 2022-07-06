@@ -18,7 +18,7 @@ public class Party {
 
     /**
      * 
-     * @return
+     * @return the creatorVampire as a creatorVampire
      */
     public CreatorVampire getCreator() {
         return this.creator;
@@ -34,7 +34,7 @@ public class Party {
 
     /**
      * 
-     * @return boolean
+     * @return if the party is full as boolean
      */
     public boolean getFull() {
         return this.isFull;
@@ -57,7 +57,7 @@ public class Party {
 
     /**
      * 
-     * @return array of members
+     * @return array of members as an array of Vampires
      */
     public Vampire[] getMembers() {
         return this.members;
@@ -76,14 +76,17 @@ public class Party {
         }
     }
 
-    public void checkFull(){
+    /**
+     * check if the members array is full and set isFull to true or false
+     */
+    public void checkFull() {
         int full = 0;
-        for (int i = 0; i < this.members.length; i++){
-            if (this.members[i] != null){
+        for (int i = 0; i < this.members.length; i++) {
+            if (this.members[i] != null) {
                 full = full + 1;
             }
         }
-        if (full == this.members.length){
+        if (full == this.members.length) {
             this.isFull = true;
         } else {
             this.isFull = false;

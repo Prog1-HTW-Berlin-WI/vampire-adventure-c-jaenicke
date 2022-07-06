@@ -14,8 +14,14 @@ public class Human {
     private int age;
     private int amountOfBlood;
     private boolean calm = false; // if the human has been sedated by a vampire
-    private boolean deceased = false; // if vampire is dead or a vampire
+    private boolean deceased = false; // if human is dead, or has become a vampire
 
+    /**
+     * constructor
+     * 
+     * @param name
+     * @param age
+     */
     public Human(String name, int age) {
         this.id = UUID.randomUUID().toString();
         this.name = name;
@@ -28,7 +34,7 @@ public class Human {
 
     /**
      * 
-     * @return
+     * @return id as String
      */
     public String getId() {
         return this.id;
@@ -36,7 +42,7 @@ public class Human {
 
     /**
      * 
-     * @return
+     * @return name as String
      */
     public String getName() {
         return this.name;
@@ -44,7 +50,7 @@ public class Human {
 
     /**
      * 
-     * @return
+     * @return age as int
      */
     public int getAge() {
         return this.age;
@@ -98,9 +104,14 @@ public class Human {
         this.deceased = value;
     }
 
+    /**
+     * the human defending himself when a vampire attacks
+     * 
+     * @return if the defense was successful as boolean
+     */
     public boolean defend() {
         Random rand = new Random();
-        int chance = rand.nextInt(101);
+        int chance = rand.nextInt(100);
 
         if (chance <= 25) {
             System.out.println("\tThe human defended himself!");
@@ -114,11 +125,11 @@ public class Human {
     /**
      * chance to flee from a vampire is 20%
      * 
-     * @return
+     * @return if the escape was successful as boolean
      */
     public boolean flee() {
         Random flee = new Random();
-        int chance = flee.nextInt(101);
+        int chance = flee.nextInt(100);
 
         if (chance <= 20) {
             return true;

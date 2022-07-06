@@ -2,6 +2,11 @@ package model;
 
 import java.util.Random;
 
+/**
+ * City class
+ * Represents the city the vampire is active in
+ * contains a list of all humans
+ */
 public class City {
     // a city has a number of inhabitants
     private Human[] humans = new Human[50];
@@ -108,7 +113,8 @@ public class City {
             "Lidia Mühle" };
 
     /**
-     * populate the city with random humans
+     * populate the city with random humans, choosing a name from the list and an
+     * age between 20 and 92
      */
     public void populateCity() {
         Random number = new Random();
@@ -123,7 +129,7 @@ public class City {
     /**
      * get a random name from the list of names
      * 
-     * @return name as String
+     * @return a name as String
      */
     private String getName() {
         Random number = new Random();
@@ -133,8 +139,7 @@ public class City {
     }
 
     /**
-     * get a random human from the list
-     * which is not deceased
+     * get a random human from the list, which is not deceased
      * 
      * @return
      */

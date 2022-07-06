@@ -43,15 +43,15 @@ public class VampireAdventureApp {
      * @return
      */
     // private static int readUserInput() {
-    //     System.out.print("\nPlease choose a number between 1 and 6:\t");
-    //     int choiceInternal = 0;
-    //     try {
-    //         choiceInternal = scanner.nextInt();
-    //     } catch (Exception e) {
-    //         System.out.println(e.getMessage());
-    //     }
+    // System.out.print("\nPlease choose a number between 1 and 6:\t");
+    // int choiceInternal = 0;
+    // try {
+    // choiceInternal = scanner.nextInt();
+    // } catch (Exception e) {
+    // System.out.println(e.getMessage());
+    // }
 
-    //     return choiceInternal;
+    // return choiceInternal;
     // }
 
     /**
@@ -306,11 +306,11 @@ public class VampireAdventureApp {
 
         if (playerParty.getCreator() != null) {
             System.out.println("The creator vampire is: " + playerParty.getCreator().getName());
-            System.out.println("\tAge: " + playerParty.getCreator().getAge() + 
-                                "\n\tHunger: " + playerParty.getCreator().getHunger() +
-                                "\n\tEnergy: " + playerParty.getCreator().getEnergy() +
-                                "\n\tPower: " + playerParty.getCreator().getPower() +
-                                "\n\tGrandness: " + playerParty.getCreator().getGrandness());
+            System.out.println("\tAge: " + playerParty.getCreator().getAge() +
+                    "\n\tHunger: " + playerParty.getCreator().getHunger() +
+                    "\n\tEnergy: " + playerParty.getCreator().getEnergy() +
+                    "\n\tPower: " + playerParty.getCreator().getPower() +
+                    "\n\tGrandness: " + playerParty.getCreator().getGrandness());
         } else {
             System.out.println("No creator vampire exists! Create one in the main menu!\n");
         }
@@ -504,11 +504,11 @@ public class VampireAdventureApp {
                 }
             } else {
                 System.out.println("\n(" + (i + offset) + ")\t" + members[i].getName());
-            System.out.println("\tAge: " + members[i].getAge() + 
-                                "\n\tHunger: " + members[i].getHunger() +
-                                "\n\tEnergy: " + members[i].getEnergy() +
-                                "\n\tPower: " + members[i].getPower() +
-                                "\n\tGrandness: " + members[i].getGrandness());
+                System.out.println("\tAge: " + members[i].getAge() +
+                        "\n\tHunger: " + members[i].getHunger() +
+                        "\n\tEnergy: " + members[i].getEnergy() +
+                        "\n\tPower: " + members[i].getPower() +
+                        "\n\tGrandness: " + members[i].getGrandness());
             }
         }
     }
