@@ -305,13 +305,18 @@ public class VampireAdventureApp {
         System.out.println("\nAll vampires of your group\n");
 
         if (playerParty.getCreator() != null) {
-            System.out.println("The creator vampire is:\n\t" + playerParty.getCreator().getName() + "\n");
+            System.out.println("The creator vampire is: " + playerParty.getCreator().getName());
+            System.out.println("\tAge: " + playerParty.getCreator().getAge() + 
+                                "\n\tHunger: " + playerParty.getCreator().getHunger() +
+                                "\n\tEnergy: " + playerParty.getCreator().getEnergy() +
+                                "\n\tPower: " + playerParty.getCreator().getPower() +
+                                "\n\tGrandness: " + playerParty.getCreator().getGrandness());
         } else {
             System.out.println("No creator vampire exists! Create one in the main menu!\n");
         }
 
-        System.out.println("Your minions are:");
-        listMembers(1);
+        System.out.println("\nYour minions are:");
+        listMembersStats(1);
 
         // wait for user to press 0 to go back to main menu
         System.out.print("\nEnter 0 to go back to the menu: ");
@@ -476,6 +481,34 @@ public class VampireAdventureApp {
                 }
             } else {
                 System.out.println("(" + (i + offset) + ")\t" + members[i].getName());
+            }
+        }
+    }
+
+    /**
+     * list all members of the party with all important statistics
+     * offset is used when the input of the menu is changing
+     * e.g. 0 is reserved for going back, offset would be 1
+     * 
+     * @param offset
+     */
+    private static void listMembersStats(int offset) {
+        Vampire[] members = playerParty.getMembers();
+        int emptyCounter = 0;
+
+        for (int i = 0; i < members.length; i++) {
+            if (members[i] == null) {
+                emptyCounter = emptyCounter + 1;
+                if (emptyCounter == members.length) {
+                    System.out.println("Looks like you don't have any minions, maybe they all died!");
+                }
+            } else {
+                System.out.println("\n(" + (i + offset) + ")\t" + members[i].getName());
+            System.out.println("\tAge: " + members[i].getAge() + 
+                                "\n\tHunger: " + members[i].getHunger() +
+                                "\n\tEnergy: " + members[i].getEnergy() +
+                                "\n\tPower: " + members[i].getPower() +
+                                "\n\tGrandness: " + members[i].getGrandness());
             }
         }
     }
