@@ -93,4 +93,18 @@ public class Party {
         }
     }
 
+    /**
+     * get number of members in the array
+     * 
+     * @return amount of valid members
+     */
+    public int getAmountMembers(){
+        int counter = 0;
+        for( int i = 0; i < this.members.length; i++){
+            if(this.members[i] != null){
+                counter = counter + 1;
+            }
+        }
+        return counter;
+    }
 }

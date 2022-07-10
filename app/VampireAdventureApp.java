@@ -1,7 +1,6 @@
 package app;
 
 import java.util.Scanner;
-
 import java.util.Random;
 
 import model.City;
@@ -108,7 +107,6 @@ public class VampireAdventureApp {
                 "(5)\t Start Nightly Adventure",
                 "(6)\t Quit",
         };
-
         System.out.println("========================================");
         System.out.println("\nVampire Adventures 1.0\n");
         for (int i = 1; i < menuItems.length; i++) {
@@ -120,7 +118,11 @@ public class VampireAdventureApp {
      * Main function for game actions and events
      */
     private static void startAdventure() {
-        //Vampire[] members = playerParty.getMembers();
+        String ANSI_RESET = "\u001B[0m";
+        String ANSI_RED = "\u001B[31m";
+        String ANSI_GREEN = "\u001B[32m";
+
+        // Vampire[] members = playerParty.getMembers();
         Random flee = new Random();
 
         System.out.println("\nRise vampires, the sun has gone down and there is lots that needs to be done.");
@@ -142,7 +144,16 @@ public class VampireAdventureApp {
             }
             waitSeconds(2);
         }
-
+        if (gameWon() == true) {
+            System.out.println(ANSI_GREEN
+                    + "\n========================================\n========================================\nYOU WON THE GAME\n========================================\n========================================"
+                    + ANSI_RESET);
+            return;
+        } else {
+            System.out.println(ANSI_RED
+                    + "\n========================================\nYou lost the night, your group is still hungry! \n========================================"
+                    + ANSI_RESET);
+        }
     }
 
     /**
@@ -219,6 +230,11 @@ public class VampireAdventureApp {
         }
     }
 
+    /**
+     * meet a vampire hunter
+     * 
+     * @return if the game is lost through the hunter
+     */
     private static boolean meetVampireHunter() {
         berlin.createHunter();
         VampireHunter hunter = berlin.getHunter();
@@ -268,7 +284,7 @@ public class VampireAdventureApp {
                     hunter.attack(playerParty.getCreator());
                     return false;
                 }
-                
+
             } else if (input == 4) {
                 // end the game
                 System.out.println("You surrender to the vampire hunter! And loose the game!");
@@ -277,6 +293,35 @@ public class VampireAdventureApp {
                 System.out.println("Invalid choice!");
             }
         }
+        return false;
+    }
+
+    /**
+     * check if the game is won
+     * when creator vampire is full and all minions are also full
+     * 
+     * @return if all existing vampires are full
+     */
+    private static boolean gameWon() {
+        int amount = playerParty.getAmountMembers();
+        Vampire[] members = playerParty.getMembers();
+        int counter = 0;
+
+        if (playerParty.getCreator().getHunger() <= 0) {
+            for (int i = 0; i < members.length; i++) {
+                if (members[i] != null) {
+                    if (members[i].getHunger() <= 0) {
+                        counter = counter + 1;
+                    }
+                }
+
+            }
+            if (counter == amount) {
+                return true;
+
+            }
+        }
+
         return false;
     }
 

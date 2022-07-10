@@ -12,7 +12,7 @@ public class VampireHunter {
     private String id;
     private String name;
     private int experiencePoints = 0;
-    private int energy = 20;
+    private int energy = 100;
     private boolean alive = true;
 
     /**

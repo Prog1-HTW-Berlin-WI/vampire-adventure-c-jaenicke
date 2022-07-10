@@ -12,7 +12,7 @@ public class Vampire {
     private String name;
     private int age;
     private int grandness;
-    private int hunger;
+    private int hunger = 10;
     private int energy = 100;
     private int power = 10;
     private Vampire creator;
@@ -233,9 +233,9 @@ public class Vampire {
      */
     public void drinkBlood(int amount, Human human) {
         if (human.getAmountOfBlood() < amount) {
-            this.hunger = this.hunger + human.getAmountOfBlood();
+            this.hunger = this.hunger - human.getAmountOfBlood();
         } else {
-            this.hunger = this.hunger + amount;
+            this.hunger = this.hunger - amount;
         }
     }
 
