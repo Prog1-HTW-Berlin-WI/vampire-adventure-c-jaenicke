@@ -81,9 +81,10 @@ public class CreatorVampire extends Vampire {
      */
     public boolean sacrifice(Vampire vampire) {
         Random flee = new Random();
-        int chance = flee.nextInt(2);
+        int chance = flee.nextInt(1);
 
         playerParty.deleteMember(vampire);
+        System.out.println("\tYour minion " + vampire.getName() + " died while trying to defend you.");
 
         if (chance == 0) {
             System.out.println("\tYou managed to escape the vampire hunter!");

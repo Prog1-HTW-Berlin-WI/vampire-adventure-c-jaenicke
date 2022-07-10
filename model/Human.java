@@ -144,7 +144,7 @@ public class Human {
      * @param vampire
      */
     public void turnIntoVampire(Vampire vampire, Party playerParty) {
-        System.out.println("The human is turning into a vampire!");
+        System.out.println("\tThe human is turning into a vampire!");
         Vampire newVampire = new Vampire(this.name, this.age, playerParty);
         newVampire.setCreator(vampire);
         if (playerParty.getFull() == true) {

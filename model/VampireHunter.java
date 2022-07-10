@@ -107,10 +107,10 @@ public class VampireHunter {
 
         if (chance == 1) {
             vampire.takeDamage(3);
-            System.out.println("The vampire hunter managed to hit you! You loose 3 energy.");
+            System.out.println("\tThe vampire hunter managed to hit you! You loose 3 energy.");
             return true;
         } else {
-            System.out.println("The vampire hunters misses!");
+            System.out.println("\tThe vampire hunters misses!");
             return false;
         }
     }
@@ -121,12 +121,12 @@ public class VampireHunter {
      * @param amount
      */
     public void takeDamage(int amount) {
-        System.out.println("You hit the vampire hunter! He lost " + amount + " energy.");
+        System.out.println("\tYou hit the vampire hunter! He lost " + amount + " energy.");
         this.setEnergy(this.getEnergy() - amount);
 
         if (this.getEnergy() <= 0) {
             this.setAlive(false);
-            System.out.println("The vampire hunter has died!");
+            System.out.println("\tThe vampire hunter has died!");
         }
     }
 
