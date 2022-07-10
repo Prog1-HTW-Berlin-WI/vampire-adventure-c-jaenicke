@@ -213,7 +213,7 @@ public class VampireAdventureApp {
                 // choose a minion
                 while (true) {
                     int choice = readIntInput();
-                    if ((playerParty.getMembers().length < choice) || (choice < 0)) {
+                    if ((playerParty.getMembers().length <= choice) || (choice < 0)) {
                         System.out.println("That is not a valid vampire!");
                     } else if (members[choice] == null) {
                         System.out.println("That is not a valid vampire!");
@@ -255,7 +255,7 @@ public class VampireAdventureApp {
                     // choose a minion
                     while (true) {
                         int choice = readIntInput();
-                        if ((playerParty.getMembers().length < choice) || (choice < 0)) {
+                        if ((playerParty.getMembers().length <= choice) || (choice < 0)) {
                             System.out.println("That is not a valid vampire!");
                         } else if (members[choice] == null) {
                             System.out.println("That is not a valid vampire!");
@@ -309,7 +309,7 @@ public class VampireAdventureApp {
                     } else {
                         System.out.print("\nWhich minion do you want to sacrifice? ");
                         input = readIntInput();
-                        if ((playerParty.getMembers().length < input) || (input < 0)) {
+                        if ((playerParty.getMembers().length <= input) || (input < 0)) {
                             System.out.println("That is not a valid vampire!");
                         } else if (members[input] == null) {
                             System.out.println("That is not a valid vampire!");
