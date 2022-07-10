@@ -8,6 +8,7 @@ import java.util.Random;
  * contains a list of all humans
  */
 public class City {
+    private VampireHunter hunter;
     // a city has a number of inhabitants
     private Human[] humans = new Human[50];
     // a list of names to choose for humans
@@ -110,7 +111,7 @@ public class City {
             "Dipl.-Ing. Hansjörg Wilms",
             "Ingelore Möchlichen",
             "Dipl.-Ing. Dörte Hein MBA",
-            "Lidia Mühle" };
+            "Lidia Mühle","Majuntke TheMasterMind" };
 
     /**
      * populate the city with random humans, choosing a name from the list and an
@@ -151,6 +152,33 @@ public class City {
                 return this.humans[value];
             }
         }
+    }
+
+    /**
+     * get vampire hunter associated with city
+     * 
+     * @return
+     */
+    public VampireHunter getHunter() {
+        return this.hunter;
+    }
+
+    /**
+     * set vampire hunter
+     * 
+     * @param hunter
+     */
+    public void setHunter(VampireHunter hunter) {
+        this.hunter = hunter;
+    }
+
+    /**
+     * generate a VampireHunter
+     */
+    public void createHunter(){
+        String name = ("Vampire hunter " + getName());
+        VampireHunter hunter = new VampireHunter(name);
+        this.hunter = hunter;
     }
 
 }

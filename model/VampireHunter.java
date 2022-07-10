@@ -12,7 +12,7 @@ public class VampireHunter {
     private String id;
     private String name;
     private int experiencePoints = 0;
-    private int energy = 1000;
+    private int energy = 20;
     private boolean alive = true;
 
     /**
@@ -101,15 +101,17 @@ public class VampireHunter {
      * 
      * @param vampire
      */
-    public void attack(Vampire vampire) {
+    public boolean attack(Vampire vampire) {
         Random rand = new Random();
         int chance = rand.nextInt(2);
 
         if (chance == 1) {
             vampire.takeDamage(3);
             System.out.println("The vampire hunter managed to hit you! You loose 3 energy.");
+            return true;
         } else {
             System.out.println("The vampire hunters misses!");
+            return false;
         }
     }
 

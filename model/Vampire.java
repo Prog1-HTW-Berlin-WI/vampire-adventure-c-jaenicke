@@ -13,7 +13,7 @@ public class Vampire {
     private int age;
     private int grandness;
     private int hunger;
-    private int energy;
+    private int energy = 100;
     private int power = 10;
     private Vampire creator;
     private boolean isDrinkingBlood;

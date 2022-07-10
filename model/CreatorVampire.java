@@ -79,15 +79,17 @@ public class CreatorVampire extends Vampire {
      * @param vampireHunter
      * @return boolean if sacrifice was successful
      */
-    public boolean sacrifice(Vampire vampire, VampireHunter vampireHunter) {
+    public boolean sacrifice(Vampire vampire) {
         Random flee = new Random();
         int chance = flee.nextInt(2);
 
         playerParty.deleteMember(vampire);
 
         if (chance == 0) {
+            System.out.println("\tYou managed to escape the vampire hunter!");
             return true;
         } else {
+            System.out.println("\tYou failed to escape the vampire hunter!");
             return false;
         }
     }
@@ -98,9 +100,9 @@ public class CreatorVampire extends Vampire {
      * @param vampire
      * @return if fleeing was successful as a boolean
      */
-    public boolean flee(Vampire vampire) {
+    public boolean flee() {
         Random flee = new Random();
-        int chance = flee.nextInt(101);
+        int chance = flee.nextInt(100);
 
         if (chance <= 40) {
             System.out.println("\tYou managed to escape the vampire hunter!");
