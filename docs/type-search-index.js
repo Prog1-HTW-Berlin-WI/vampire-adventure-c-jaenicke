@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","u":"allclasses-index.html"},{"p":"model","l":"City"},{"p":"model","l":"CreatorVampire"},{"p":"model","l":"Human"},{"p":"model","l":"Party"},{"p":"model","l":"Vampire"},{"p":"app","l":"VampireAdventureApp"},{"p":"model","l":"VampireHunter"}];updateSearchResults();
