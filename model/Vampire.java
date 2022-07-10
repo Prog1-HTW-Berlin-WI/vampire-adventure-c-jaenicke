@@ -22,6 +22,13 @@ public class Vampire {
     private boolean finallyDead;
     Party playerParty;
 
+    /**
+     * Simple 
+     * 
+     * @param name
+     * @param age
+     * @param playerParty
+     */
     public Vampire(String name, int age, Party playerParty) {
         this.id = UUID.randomUUID().toString();
         this.name = name;

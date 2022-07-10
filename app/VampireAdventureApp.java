@@ -260,10 +260,10 @@ public class VampireAdventureApp {
                         } else if (members[choice] == null) {
                             System.out.println("That is not a valid vampire!");
                         } else {
-                            Vampire vampire = (members[input]);
-                            System.out.print("\nHow much should the minion " + vampire.getName() + " drink? ");
+                            Vampire vampire2 = (members[choice]);
+                            System.out.print("\nHow much should the minion " + vampire2.getName() + " drink? ");
                             int amount = readIntInput();
-                            playerParty.getCreator().commandToDrinkBlood(vampire, amount, human);
+                            playerParty.getCreator().commandToDrinkBlood(vampire2, amount, human);
                             // break;
                             return;
                         }
@@ -361,7 +361,7 @@ public class VampireAdventureApp {
      * check if the game is won
      * when creator vampire is full and all minions are also full
      * 
-     * @return if all existing vampires are full
+     * @return if all existing vampires are full and the game is won
      */
     private static boolean gameWon() {
         int amount = playerParty.getAmountMembers();
@@ -375,15 +375,12 @@ public class VampireAdventureApp {
                         counter = counter + 1;
                     }
                 }
-
             }
             if (counter == amount) {
                 return true;
-
             }
         }
-
-        return true;
+        return false;
     }
 
     /**
