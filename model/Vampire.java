@@ -23,7 +23,7 @@ public class Vampire {
     Party playerParty;
 
     /**
-     * Simple 
+     * Constructor 
      * 
      * @param name
      * @param age

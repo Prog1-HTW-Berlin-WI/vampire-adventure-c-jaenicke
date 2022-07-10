@@ -154,7 +154,7 @@ public class VampireAdventureApp {
                 System.out.println("\nA Vampire Hunter has crossed your way. Your time has come...");
                 if (meetVampireHunter() == true) {
                     waitSeconds(2);
-                    //return;
+                    // return;
                 } else {
                     System.out.println(ANSI_RED
                             + "\n========================================\nYou lost the night, your group is still hungry!\n========================================"
@@ -224,7 +224,6 @@ public class VampireAdventureApp {
                     }
                 }
             }
-            // TODO not having minions still gives the "attack has failed text"
 
         } else {
             System.out.println("Invalid input!");
@@ -249,7 +248,8 @@ public class VampireAdventureApp {
                 while (true) {
                     // minion should drink
                     if (listMembersStats(0) == false) {
-                        break;
+                        System.out.println("You missed your chance and the human ran away!");
+                        return;
                     }
                     System.out.print("\nWhich minion should drink? ");
                     // choose a minion
@@ -344,7 +344,7 @@ public class VampireAdventureApp {
 
                 } else {
                     return true;
-                    //break;
+                    // break;
                 }
             } else if (input == 4) {
                 // give up
@@ -354,7 +354,7 @@ public class VampireAdventureApp {
                 System.out.println("Invalid choice!");
             }
         }
-        //return true;
+        // return true;
     }
 
     /**
@@ -574,8 +574,6 @@ public class VampireAdventureApp {
     private static void debugCreateVampire() {
         System.out.println("\n========================================");
         System.out.println("\n!!--- DEBUG Vampire Creation Menu\n");
-
-        // TODO when the vampire class is expanded, fill out more of the attributes
 
         System.out.println("Creating creator vampire\nName: The Creator Vampire\n Age: 300");
         CreatorVampire cVampire = new CreatorVampire("The Creator Vampire", 300, playerParty);
