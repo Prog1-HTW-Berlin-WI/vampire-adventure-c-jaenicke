@@ -6,6 +6,9 @@ import java.util.Random;
  * City class
  * Represents the city the vampire is active in
  * contains a list of all humans
+ * 
+ * @author @c-jaenicke Christoph Nicklas Jänicke
+ * @author @ilkbi Ilkaan Bingöl
  */
 public class City {
     private VampireHunter hunter;
@@ -111,7 +114,7 @@ public class City {
             "Dipl.-Ing. Hansjörg Wilms",
             "Ingelore Möchlichen",
             "Dipl.-Ing. Dörte Hein MBA",
-            "Lidia Mühle","Majuntke TheMasterMind" };
+            "Lidia Mühle", "Majuntke TheMasterMind" };
 
     /**
      * populate the city with random humans, choosing a name from the list and an
@@ -175,7 +178,7 @@ public class City {
     /**
      * generate a VampireHunter
      */
-    public void createHunter(){
+    public void createHunter() {
         String name = ("Vampire hunter " + getName());
         VampireHunter hunter = new VampireHunter(name);
         this.hunter = hunter;

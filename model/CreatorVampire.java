@@ -7,6 +7,9 @@ import java.util.Random;
  * 
  * Represents a playable character
  * Extends the class Vampire
+ * 
+ * @author @c-jaenicke Christoph Nicklas Jänicke
+ * @author @ilkbi Ilkaan Bingöl
  */
 public class CreatorVampire extends Vampire {
     // never really used, since the Party class takes this position

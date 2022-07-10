@@ -5,7 +5,9 @@ import java.util.UUID;
 
 /**
  * Class Vampire
- * 
+ *
+ * @author @c-jaenicke Christoph Nicklas Jänicke
+ * @author @ilkbi Ilkaan Bingöl
  */
 public class Vampire {
     private String id;
@@ -23,7 +25,7 @@ public class Vampire {
     Party playerParty;
 
     /**
-     * Constructor 
+     * Constructor
      * 
      * @param name
      * @param age
@@ -253,6 +255,9 @@ public class Vampire {
      */
     public void takeDamage(int damage) {
         this.energy = this.energy - damage;
+        if (this.energy <= 0) {
+            this.finallyDead = true;
+        }
     }
 
 }

@@ -7,6 +7,9 @@ import java.util.UUID;
  * Class Human
  * 
  * Represents a person to feed on
+ * 
+ * @author @c-jaenicke Christoph Nicklas Jänicke
+ * @author @ilkbi Ilkaan Bingöl
  */
 public class Human {
     private String id;

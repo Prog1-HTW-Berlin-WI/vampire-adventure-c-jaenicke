@@ -2,6 +2,9 @@ package model;
 
 /**
  * Represents the party of the player, contains all vampires and the creator
+ * 
+ * @author @c-jaenicke Christoph Nicklas Jänicke
+ * @author @ilkbi Ilkaan Bingöl
  */
 public class Party {
     private CreatorVampire creator = null;
@@ -98,10 +101,10 @@ public class Party {
      * 
      * @return amount of valid members
      */
-    public int getAmountMembers(){
+    public int getAmountMembers() {
         int counter = 0;
-        for( int i = 0; i < this.members.length; i++){
-            if(this.members[i] != null){
+        for (int i = 0; i < this.members.length; i++) {
+            if (this.members[i] != null) {
                 counter = counter + 1;
             }
         }

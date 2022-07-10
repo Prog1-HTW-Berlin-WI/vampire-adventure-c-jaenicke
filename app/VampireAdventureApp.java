@@ -12,7 +12,9 @@ import model.VampireHunter;
 
 /**
  * Main game function
- *
+ * 
+ * @author @c-jaenicke Christoph Nicklas Jänicke
+ * @author @ilkbi Ilkaan Bingöl
  */
 public class VampireAdventureApp {
 

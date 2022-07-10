@@ -7,6 +7,9 @@ import java.util.UUID;
  * Class VampireHunter
  * 
  * Represents an enemy
+ * 
+ * @author @c-jaenicke Christoph Nicklas Jänicke
+ * @author @ilkbi Ilkaan Bingöl
  */
 public class VampireHunter {
     private String id;
